@@ -1,0 +1,64 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Написать документацию",
+      "status": "active",
+      "createdAt": "2024-05-10T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "title": "Исправить баг в API",
+      "status": "completed",
+      "createdAt": "2024-05-09T14:30:00Z"
+    },
+    {
+      "id": 3,
+      "title": "Добавить тесты",
+      "status": "active",
+      "createdAt": "2024-05-08T09:15:00Z"
+    },
+    {
+      "id": 4,
+      "title": "Обновить зависимости",
+      "status": "completed",
+      "createdAt": "2024-05-07T11:20:00Z"
+    },
+    {
+      "id": 5,
+      "title": "Оптимизировать запросы",
+      "status": "active",
+      "createdAt": "2024-05-06T16:45:00Z"
+    },
+    {
+      "id": 6,
+      "title": "Рефакторинг компонентов",
+      "status": "active",
+      "createdAt": "2024-05-05T13:10:00Z"
+    },
+    {
+      "id": 7,
+      "title": "Настроить CI/CD",
+      "status": "completed",
+      "createdAt": "2024-05-04T10:25:00Z"
+    },
+    {
+      "id": 8,
+      "title": "Провести код-ревью",
+      "status": "active",
+      "createdAt": "2024-05-03T15:30:00Z"
+    },
+    {
+      "id": 9,
+      "title": "Добавить логгирование",
+      "status": "completed",
+      "createdAt": "2024-05-02T12:40:00Z"
+    },
+    {
+      "id": 10,
+      "title": "Обновить README",
+      "status": "active",
+      "createdAt": "2024-05-01T08:50:00Z"
+    }
+  ]
+}
