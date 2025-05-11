@@ -10,6 +10,17 @@ module.exports = {
   parserOptions: {
     parser: '@babel/eslint-parser'
   },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './src'],
+          ['@components', './src/components']
+        ],
+        extensions: ['.js', '.vue', '.json']
+      }
+    }
+  },
   rules: {
     // Правила для секции <template>
     'vue/attributes-order': [
@@ -65,13 +76,6 @@ module.exports = {
         ignores: []
       }
     ],
-    'vue/component-name-in-template-casing': [
-      'error',
-      'kebab-case',
-      {
-        registeredComponentsOnly: true
-      }
-    ],
     'vue/no-irregular-whitespace': [
       'error',
       {
@@ -86,13 +90,6 @@ module.exports = {
 
     // Правила для секции <script>
     'vue/component-definition-name-casing': ['error', 'PascalCase'],
-    'vue/match-component-file-name': [
-      'error',
-      {
-        extensions: ['vue'],
-        shouldMatchCase: false
-      }
-    ],
     'vue/no-dupe-keys': [
       'error',
       {
