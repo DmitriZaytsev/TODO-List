@@ -1,194 +1,192 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
   },
-  globals: {
-    Promise: 'off'
-  },
-  extends: ['plugin:vue/essential', '@vue/airbnb', 'prettier'],
+  extends: ["plugin:vue/essential", "@vue/airbnb"],
   parserOptions: {
-    parser: '@babel/eslint-parser'
+    parser: "@babel/eslint-parser",
   },
   settings: {
-    'import/resolver': {
+    "import/resolver": {
       alias: {
         map: [
-          ['@', './src'],
-          ['@components', './src/components']
+          ["@", "./src"],
+          ["@components", "./src/components"],
         ],
-        extensions: ['.js', '.vue', '.json']
-      }
-    }
+        extensions: [".js", ".vue", ".json"],
+      },
+    },
   },
   rules: {
     // Правила для секции <template>
-    'vue/attributes-order': [
-      'error',
+    "vue/attributes-order": [
+      "error",
       {
         order: [
-          'DEFINITION',
-          'LIST_RENDERING',
-          'CONDITIONALS',
-          'RENDER_MODIFIERS',
-          'GLOBAL',
-          ['UNIQUE', 'SLOT'],
-          'TWO_WAY_BINDING',
-          'OTHER_DIRECTIVES',
-          'OTHER_ATTR',
-          'EVENTS',
-          'CONTENT'
+          "DEFINITION",
+          "LIST_RENDERING",
+          "CONDITIONALS",
+          "RENDER_MODIFIERS",
+          "GLOBAL",
+          ["UNIQUE", "SLOT"],
+          "TWO_WAY_BINDING",
+          "OTHER_DIRECTIVES",
+          "OTHER_ATTR",
+          "EVENTS",
+          "CONTENT",
         ],
-        alphabetical: false
-      }
+        alphabetical: false,
+      },
     ],
-    'vue/max-attributes-per-line': [
-      'error',
+    "vue/max-attributes-per-line": [
+      "error",
       {
         singleline: {
-          max: 1
+          max: 1,
         },
         multiline: {
-          max: 1
-        }
-      }
+          max: 1,
+        },
+      },
     ],
-    'vue/html-self-closing': [
-      'error',
+    "vue/html-self-closing": [
+      "error",
       {
         html: {
-          void: 'never',
-          normal: 'always',
-          component: 'always'
+          void: "never",
+          normal: "always",
+          component: "always",
         },
-        svg: 'always',
-        math: 'always'
-      }
+        svg: "always",
+        math: "always",
+      },
     ],
-    'vue/html-indent': [
-      'error',
+    "vue/html-indent": [
+      "error",
       2,
       {
         attribute: 1,
         baseIndent: 1,
         closeBracket: 0,
         alignAttributesVertically: true,
-        ignores: []
-      }
+        ignores: [],
+      },
     ],
-    'vue/no-irregular-whitespace': [
-      'error',
+    "vue/no-irregular-whitespace": [
+      "error",
       {
         skipStrings: true,
         skipComments: false,
         skipRegExps: false,
         skipTemplates: false,
         skipHTMLAttributeValues: false,
-        skipHTMLTextContents: false
-      }
+        skipHTMLTextContents: false,
+      },
     ],
 
     // Правила для секции <script>
-    'vue/component-definition-name-casing': ['error', 'PascalCase'],
-    'vue/no-dupe-keys': [
-      'error',
+    "vue/component-definition-name-casing": ["error", "PascalCase"],
+    "vue/no-dupe-keys": [
+      "error",
       {
-        groups: []
-      }
+        groups: [],
+      },
     ],
-    'vue/order-in-components': [
-      'error',
+    "vue/order-in-components": [
+      "error",
       {
         order: [
-          'el',
-          'name',
-          'key',
-          'parent',
-          'functional',
-          ['delimiters', 'comments'],
-          ['components', 'directives', 'filters'],
-          'extends',
-          'mixins',
-          ['provide', 'inject'],
-          'ROUTER_GUARDS',
-          'layout',
-          'middleware',
-          'validate',
-          'scrollToTop',
-          'transition',
-          'loading',
-          'inheritAttrs',
-          'model',
-          ['props', 'propsData'],
-          'emits',
-          'setup',
-          'asyncData',
-          'data',
-          'fetch',
-          'head',
-          'computed',
-          'watch',
-          'watchQuery',
-          'LIFECYCLE_HOOKS',
-          'methods',
-          ['template', 'render'],
-          'renderError'
-        ]
-      }
+          "el",
+          "name",
+          "key",
+          "parent",
+          "functional",
+          ["delimiters", "comments"],
+          ["components", "directives", "filters"],
+          "extends",
+          "mixins",
+          ["provide", "inject"],
+          "ROUTER_GUARDS",
+          "layout",
+          "middleware",
+          "validate",
+          "scrollToTop",
+          "transition",
+          "loading",
+          "inheritAttrs",
+          "model",
+          ["props", "propsData"],
+          "emits",
+          "setup",
+          "asyncData",
+          "data",
+          "fetch",
+          "head",
+          "computed",
+          "watch",
+          "watchQuery",
+          "LIFECYCLE_HOOKS",
+          "methods",
+          ["template", "render"],
+          "renderError",
+        ],
+      },
     ],
 
     // Общие настройки ESLint
-    'comma-dangle': [
-      'error',
+    "comma-dangle": [
+      "error",
       {
-        arrays: 'never',
-        objects: 'never',
-        imports: 'never',
-        exports: 'never',
-        functions: 'never'
-      }
+        arrays: "never",
+        objects: "never",
+        imports: "never",
+        exports: "never",
+        functions: "never",
+      },
     ],
-    'linebreak-style': ['error', 'unix'],
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'arrow-parens': ['error', 'as-needed'],
-    'constructor-super': 'off',
-    'no-mixed-operators': [
-      'error',
+    "linebreak-style": ["error", "unix"],
+    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "arrow-parens": ["error", "as-needed"],
+    "constructor-super": "off",
+    "no-mixed-operators": [
+      "error",
       {
         groups: [
-          ['+', '-', '*', '/', '%', '**'],
-          ['&', '|', '^', '~', '<<', '>>', '>>>'],
-          ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
-          ['&&', '||'],
-          ['in', 'instanceof']
+          ["+", "-", "*", "/", "%", "**"],
+          ["&", "|", "^", "~", "<<", ">>", ">>>"],
+          ["==", "!=", "===", "!==", ">", ">=", "<", "<="],
+          ["&&", "||"],
+          ["in", "instanceof"],
         ],
-        allowSamePrecedence: true
-      }
+        allowSamePrecedence: true,
+      },
     ],
-    'import/extensions': 'off',
-    'import/prefer-default-export': 'off',
-    'no-unused-expressions': 'error',
-    'no-param-reassign': 'off',
-    'prefer-destructuring': [
-      'error',
+    "import/no-extraneous-dependencies": "off",
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "no-unused-expressions": "error",
+    "no-param-reassign": "off",
+    "prefer-destructuring": [
+      "error",
       {
         array: true,
-        object: true
+        object: true,
       },
       {
-        enforceForRenamedProperties: false
-      }
+        enforceForRenamedProperties: false,
+      },
     ],
-    'no-bitwise': ['error', { allow: ['~'] }],
-    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-    'max-len': ['error', { code: 120 }],
-    'object-curly-newline': [
-      'error',
+    "no-bitwise": ["error", { allow: ["~"] }],
+    "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+    "max-len": ["error", { code: 120 }],
+    "object-curly-newline": [
+      "error",
       {
         ObjectExpression: { multiline: true, consistent: true },
-        ObjectPattern: { multiline: true, consistent: true }
-      }
-    ]
-  }
+        ObjectPattern: { multiline: true, consistent: true },
+      },
+    ],
+  },
 };

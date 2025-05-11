@@ -6,7 +6,11 @@
     "moduleResolution": "node",
     "paths": {
       "@/*": ["src/*"],
-      "@/components/*": ["src/components/*"]
+      "@/components/*": ["src/components/*"],
+      "@/config/*": ["src/config/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/store/*": ["src/store/*"],
+      "@/plugins/*": ["src/plugins/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   }
