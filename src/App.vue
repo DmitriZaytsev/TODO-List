@@ -17,9 +17,3 @@ export default {
     <VToast />
   </VApp>
 </template>
-
-<style>
-html, body {
-  overflow: auto;
-}
-</style>
