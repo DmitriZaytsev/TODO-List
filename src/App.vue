@@ -1,39 +1,19 @@
-<template>
-  <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer />
-    </v-app-bar>
-  </v-app>
-</template>
-
 <script>
+import TodoPage from "@/components/Todo/Page";
+import ToastNotification from "@/components/ToastNotification";
+import { VApp, VMain } from "vuetify/lib/components";
+
 export default {
-  name: 'App',
-
-  components: {},
-
-  data: () => ({
-    //
-  })
+  name: "App",
+  components: { TodoPage, VApp, VMain, ToastNotification },
 };
 </script>
+
+<template>
+  <VApp>
+    <VMain>
+      <TodoPage />
+    </VMain>
+    <ToastNotification />
+  </VApp>
+</template>
