@@ -1,5 +1,5 @@
-import Vue from "vue";
-import Vuetify from "vuetify";
+import Vue from 'vue';
+import Vuetify from 'vuetify';
 import {
   VDialog,
   VCard,
@@ -8,8 +8,8 @@ import {
   VCardActions,
   VBtn,
   VProgressCircular,
-  VDivider,
-} from "vuetify/lib/components";
+  VDivider
+} from 'vuetify/lib/components';
 
 Vue.use(Vuetify);
 const vuetify = new Vuetify();
@@ -17,23 +17,23 @@ const vuetify = new Vuetify();
 export function confirmModal() {
   return {
     confirm(options = {}) {
-      return new Promise((resolve) => {
-        const container = document.createElement("div");
+      return new Promise(resolve => {
+        const container = document.createElement('div');
         document.body.appendChild(container);
 
         // Параметры по умолчанию
         const dialogOptions = {
-          title: "Подтверждение",
-          text: "Вы уверены?",
-          confirmText: "Да",
-          cancelText: "Отмена",
-          confirmColor: "primary",
-          cancelColor: "grey",
+          title: 'Подтверждение',
+          text: 'Вы уверены?',
+          confirmText: 'Да',
+          cancelText: 'Отмена',
+          confirmColor: 'primary',
+          cancelColor: 'grey',
           width: 400,
           persistent: false,
           loading: false,
           customContent: null,
-          ...options,
+          ...options
         };
 
         const ConfirmComponent = Vue.extend({
@@ -45,7 +45,7 @@ export function confirmModal() {
             VCardActions,
             VBtn,
             VProgressCircular,
-            VDivider,
+            VDivider
           },
           data() {
             return {
@@ -60,7 +60,7 @@ export function confirmModal() {
               persistent: dialogOptions.persistent,
               loading: dialogOptions.loading,
               customContent: dialogOptions.customContent,
-              isConfirming: false,
+              isConfirming: false
             };
           },
           methods: {
@@ -69,7 +69,7 @@ export function confirmModal() {
 
               // Опциональная задержка для имитации загрузки
               if (dialogOptions.loading) {
-                await new Promise((resolveTimeout) => {
+                await new Promise(resolveTimeout => {
                   setTimeout(resolveTimeout, 500);
                 });
               }
@@ -84,81 +84,81 @@ export function confirmModal() {
             afterLeave() {
               this.$destroy();
               container.remove();
-            },
+            }
           },
           render(h) {
             // Создаем содержимое диалогового окна
             const cardChildren = [
-              h("v-card-title", this.title),
-              this.text ? h("v-card-text", this.text) : null,
+              h('v-card-title', this.title),
+              this.text ? h('v-card-text', this.text) : null
             ];
 
             // Добавляем кастомный контент, если он есть
             if (this.customContent) {
               if (this.text) {
-                cardChildren.push(h("v-divider"));
+                cardChildren.push(h('v-divider'));
               }
               cardChildren.push(
-                h("div", { domProps: { innerHTML: this.customContent } })
+                h('div', { domProps: { innerHTML: this.customContent } })
               );
             }
 
             // Добавляем кнопки действий
             cardChildren.push(
-              h("v-card-actions", { class: "justify-end" }, [
+              h('v-card-actions', { class: 'justify-end' }, [
                 this.cancelText
                   ? h(
-                      "v-btn",
-                      {
-                        props: {
-                          text: true,
-                          color: this.cancelColor,
-                          disabled: this.isConfirming,
-                        },
-                        on: { click: this.cancelAction },
+                    'v-btn',
+                    {
+                      props: {
+                        text: true,
+                        color: this.cancelColor,
+                        disabled: this.isConfirming
                       },
-                      this.cancelText
-                    )
+                      on: { click: this.cancelAction }
+                    },
+                    this.cancelText
+                  )
                   : null,
                 h(
-                  "v-btn",
+                  'v-btn',
                   {
                     props: {
                       color: this.confirmColor,
-                      loading: this.isConfirming,
+                      loading: this.isConfirming
                     },
-                    on: { click: this.confirmAction },
+                    on: { click: this.confirmAction }
                   },
                   this.isConfirming ? [] : [this.confirmText]
-                ),
+                )
               ])
             );
 
             // Создаем карточку
-            const card = h("v-card", {}, cardChildren.filter(Boolean));
+            const card = h('v-card', {}, cardChildren.filter(Boolean));
 
             // Создаем диалоговое окно
             return h(
-              "v-dialog",
+              'v-dialog',
               {
                 props: {
                   value: this.isOpen,
                   width: this.width,
-                  persistent: this.persistent || this.isConfirming,
+                  persistent: this.persistent || this.isConfirming
                 },
                 on: {
-                  "after-leave": this.afterLeave,
-                },
+                  'after-leave': this.afterLeave
+                }
               },
               [card]
             );
-          },
+          }
         });
 
         new ConfirmComponent({
-          vuetify,
+          vuetify
         }).$mount(container);
       });
-    },
+    }
   };
 }

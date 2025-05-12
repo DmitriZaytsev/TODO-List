@@ -1,6 +1,6 @@
-import axios from "axios";
-import { getMockTasksURL, getMockTaskURL } from "@/config/request-urls";
-import { storeApiRequest } from "@/utils/store-api-request";
+import axios from 'axios';
+import { getMockTasksURL, getMockTaskURL } from '@/config/request-urls';
+import { storeApiRequest } from '@/utils/store-api-request';
 
 export default {
   namespaced: true,
@@ -14,7 +14,7 @@ export default {
       deleteTask: false,
       deleteFilteredTasks: false,
       getTaskById: false,
-      default: false,
+      default: false
     },
     errorStates: {
       fetchTasks: null,
@@ -23,8 +23,8 @@ export default {
       deleteTask: null,
       deleteFilteredTasks: null,
       getTaskById: null,
-      default: null,
-    },
+      default: null
+    }
   },
   mutations: {
     SET_TASKS(state, tasks) {
@@ -34,20 +34,20 @@ export default {
       state.tasks.unshift(task);
     },
     UPDATE_TASK(state, updatedTask) {
-      const index = state.tasks.findIndex((t) => t.id === updatedTask.id);
+      const index = state.tasks.findIndex(t => t.id === updatedTask.id);
       if (index !== -1) {
         state.tasks.splice(index, 1, updatedTask);
       }
     },
     DELETE_TASK(state, taskId) {
-      state.tasks = state.tasks.filter((t) => t.id !== taskId);
+      state.tasks = state.tasks.filter(t => t.id !== taskId);
     },
     DELETE_TASKS(state) {
       state.tasks = [];
     },
     DELETE_FILTERED_TASKS(state, taskIds) {
       if (Array.isArray(taskIds) && taskIds.length > 0) {
-        state.tasks = state.tasks.filter((task) => !taskIds.includes(task.id));
+        state.tasks = state.tasks.filter(task => !taskIds.includes(task.id));
       }
     },
     SET_CURRENT_TASK(state, task) {
@@ -61,7 +61,7 @@ export default {
     },
     REORDER_TASKS(state, newOrder) {
       state.tasks = newOrder;
-    },
+    }
   },
   actions: {
     async fetchTasks(context) {
@@ -73,10 +73,10 @@ export default {
         context,
         async () => {
           const response = await axios.get(getMockTasksURL());
-          context.commit("SET_TASKS", response.data);
+          context.commit('SET_TASKS', response.data);
           return response.data;
         },
-        { action: "fetchTasks" }
+        { action: 'fetchTasks' }
       );
     },
 
@@ -86,13 +86,13 @@ export default {
         async () => {
           const response = await axios.post(getMockTasksURL(), {
             ...taskData,
-            status: "active",
-            createdAt: new Date().toISOString(),
+            status: 'active',
+            createdAt: new Date().toISOString()
           });
-          context.commit("ADD_TASK", response.data);
+          context.commit('ADD_TASK', response.data);
           return response.data;
         },
-        { action: "createTask" }
+        { action: 'createTask' }
       );
     },
 
@@ -101,10 +101,10 @@ export default {
         context,
         async () => {
           const response = await axios.patch(getMockTaskURL(id), taskData);
-          context.commit("UPDATE_TASK", response.data);
+          context.commit('UPDATE_TASK', response.data);
           return response.data;
         },
-        { action: "updateTask" }
+        { action: 'updateTask' }
       );
     },
 
@@ -116,42 +116,42 @@ export default {
           return true;
         },
         {
-          action: "deleteTask",
+          action: 'deleteTask',
           commitBeforeRequest: true,
-          commitFn: () => context.commit("DELETE_TASK", taskId),
+          commitFn: () => context.commit('DELETE_TASK', taskId)
         }
       );
     },
 
     deleteAllTasks({ commit }) {
-      commit("DELETE_TASKS");
+      commit('DELETE_TASKS');
     },
 
     async deleteFilteredTasks({ commit }, taskIds) {
-      commit("SET_LOADING", { action: "deleteFilteredTasks", isLoading: true });
+      commit('SET_LOADING', { action: 'deleteFilteredTasks', isLoading: true });
       try {
         // имитация задержки
-        await new Promise((resolve) => {
+        await new Promise(resolve => {
           setTimeout(resolve, 500);
         });
-        commit("DELETE_FILTERED_TASKS", taskIds);
-        commit("SET_ERROR", { action: "deleteFilteredTasks", error: null });
+        commit('DELETE_FILTERED_TASKS', taskIds);
+        commit('SET_ERROR', { action: 'deleteFilteredTasks', error: null });
         return true;
       } catch (error) {
-        commit("SET_ERROR", { action: "deleteFilteredTasks", error });
+        commit('SET_ERROR', { action: 'deleteFilteredTasks', error });
         throw error;
       } finally {
-        commit("SET_LOADING", {
-          action: "deleteFilteredTasks",
-          isLoading: false,
+        commit('SET_LOADING', {
+          action: 'deleteFilteredTasks',
+          isLoading: false
         });
       }
     },
 
     async getTaskById(context, taskId) {
-      const existing = context.state.tasks.find((t) => t.id === taskId);
+      const existing = context.state.tasks.find(t => t.id === taskId);
       if (existing) {
-        context.commit("SET_CURRENT_TASK", existing);
+        context.commit('SET_CURRENT_TASK', existing);
         return existing;
       }
 
@@ -159,36 +159,34 @@ export default {
         context,
         async () => {
           const response = await axios.get(getMockTaskURL(taskId));
-          context.commit("SET_CURRENT_TASK", response.data);
+          context.commit('SET_CURRENT_TASK', response.data);
           return response.data;
         },
-        { action: "getTaskById" }
+        { action: 'getTaskById' }
       );
     },
 
     reorderTasks({ commit }, newOrder) {
-      commit("REORDER_TASKS", newOrder);
-    },
+      commit('REORDER_TASKS', newOrder);
+    }
   },
   getters: {
-    allTasks: (state) => state.tasks,
-    activeTasks: (state) => state.tasks.filter((t) => t.status === "active"),
-    completedTasks: (state) =>
-      state.tasks.filter((t) => t.status === "completed"),
-    currentTask: (state) => state.currentTask,
-    loadingStates: (state) => state.loadingStates,
-    errorStates: (state) => state.errorStates,
-    isLoading: (state) =>
-      Object.values(state.loadingStates).some((status) => status),
+    allTasks: state => state.tasks,
+    activeTasks: state => state.tasks.filter(t => t.status === 'active'),
+    completedTasks: state => state.tasks.filter(t => t.status === 'completed'),
+    currentTask: state => state.currentTask,
+    loadingStates: state => state.loadingStates,
+    errorStates: state => state.errorStates,
+    isLoading: state => Object.values(state.loadingStates).some(status => status),
     filteredTasks: (state, getters, rootState) => {
       const { currentFilter, searchQuery } = rootState.ui;
 
       let tasks;
       switch (currentFilter) {
-        case "active":
+        case 'active':
           tasks = getters.activeTasks;
           break;
-        case "completed":
+        case 'completed':
           tasks = getters.completedTasks;
           break;
         default:
@@ -196,12 +194,10 @@ export default {
       }
 
       if (searchQuery.trim()) {
-        return tasks.filter((task) =>
-          task.title.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+        return tasks.filter(task => task.title.toLowerCase().includes(searchQuery.toLowerCase()));
       }
 
       return tasks;
-    },
-  },
+    }
+  }
 };

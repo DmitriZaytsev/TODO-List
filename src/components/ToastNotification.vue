@@ -11,14 +11,14 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { toast } from "@/utils";
+import { mapGetters } from 'vuex';
+import { toast } from '@/utils';
 
 export default {
-  name: "ToastNotification",
+  name: 'ToastNotification',
   computed: {
     ...mapGetters({
-      toast: "ui/toast",
+      toast: 'ui/toast'
     }),
     visible: {
       get() {
@@ -28,8 +28,8 @@ export default {
         if (!value) {
           toast.hide();
         }
-      },
-    },
-  },
+      }
+    }
+  }
 };
 </script>
