@@ -7,7 +7,6 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "dev": "concurrently \"npm run server\" \"npm run serve\"",
-    "format": "prettier --write \"src/**/*.{js,vue,scss,sass,json}\"",
     "lint:fix": "vue-cli-service lint --fix",
     "server": "json-server --watch src/server/database/db.json --port 3000"
   },

@@ -1,0 +1,32 @@
+services:
+  frontend:
+    restart: always
+    build:
+      context: .
+      dockerfile: DockerFile
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    command: npm run serve
+    networks:
+      - app-network
+
+  jsonserver:
+    restart: always
+    image: node:22.15.0
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    command: >
+      bash -c "npm install && npm run server"
+    ports:
+      - "127.0.0.1:3000:3000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
