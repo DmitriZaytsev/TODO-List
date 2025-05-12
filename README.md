@@ -1,6 +1,6 @@
 # Веб-приложение TodoList
 
-Развёрнутое приложение: https://todolist-projct.netlify.app/(https://todolist-projct.netlify.app/)
+Развёрнутое приложение: https://todolist-projct.netlify.app
 <br>
 
 ### Описание проекта
