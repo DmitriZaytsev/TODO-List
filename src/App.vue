@@ -1,11 +1,11 @@
 <script>
 import TodoPage from '@/components/Todo/Page';
-import ToastNotification from '@/components/ToastNotification';
+import VToast from '@/components/VToast';
 import { VApp, VMain } from 'vuetify/lib/components';
 
 export default {
   name: 'App',
-  components: { TodoPage, VApp, VMain, ToastNotification }
+  components: { TodoPage, VApp, VMain, VToast }
 };
 </script>
 
@@ -14,7 +14,7 @@ export default {
     <VMain>
       <TodoPage />
     </VMain>
-    <ToastNotification />
+    <VToast />
   </VApp>
 </template>
 

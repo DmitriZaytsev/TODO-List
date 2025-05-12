@@ -1,5 +1,5 @@
 <template>
-  <v-snackbar
+  <VSnackbar
     v-model="visible"
     :color="toast.color"
     :timeout="toast.timeout"
@@ -7,15 +7,17 @@
     :elevation="toast.elevation"
   >
     {{ toast.message }}
-  </v-snackbar>
+  </VSnackbar>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import { toast } from '@/utils';
+import { VSnackbar } from 'vuetify/lib/components';
 
 export default {
-  name: 'ToastNotification',
+  name: 'VToast',
+  components: { VSnackbar },
   computed: {
     ...mapGetters({
       toast: 'ui/toast'
