@@ -11,3 +11,8 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* Сброс стилей Vuetify */
+.v-application p {
+  margin-bottom: 0 !important;
+}
