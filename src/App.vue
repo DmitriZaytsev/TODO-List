@@ -17,3 +17,9 @@ export default {
     <ToastNotification />
   </VApp>
 </template>
+
+<style>
+html, body {
+  overflow: auto;
+}
+</style>
